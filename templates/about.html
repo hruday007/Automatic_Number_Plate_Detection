@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+ <h4> Pre-processing steps involves the following methods <br> <br>
+
+1. Gaussian blur: <br>Gaussian blurring is highly effective in removing gaussian noise from the 
+image. Image blurring is achieved by convolving the image with a low-pass filter kernel. 
+It actually removes high frequency content (e.g: noise, edges) from the image resulting in 
+edges being blurred. In this approach, instead of a box filter consisting of equal filter 
+coefficients, a Gaussian kernel is used. It is done with the function, cv2.GaussianBlur(). </h4>
+
+<h4>
+	2. Gray scale conversion:<br> It involves conversion of RGB image into grey image. 
+A gray-scale image is composed of different shades of grey color. A true color image can 
+be converted to a gray scale image by preserving the luminance (brightness) of the image. 
+Here the RGB image is a combination of RED, BLUE AND GREEN colors. The grayscale 
+image is obtained from the RGB image by combining 30% of RED, 60% of GREEN and 
+11% of BLUE. This gives the brightness information of the image. The resulting image 
+will be two dimensional. The value 0 represents black and the value 255 represents white. 
+The range will be between black and white values
+</h4>
+
+</body>
+</html>

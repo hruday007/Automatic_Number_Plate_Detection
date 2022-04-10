@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+	<div class="row">
+		<nav class="menu menu-1">
+  <ul>
+    <li><a href="#">Automatic and Fast Vehicle Number Plate Detection</a></li>
+    <li><a href="about">About</a></li>
+  </ul>
+</nav>
+  <div class="row">
+  	 <div class="column left" >
+ 	
+ 	<h4> Video Input :</h4>
+	<img src="{{ url_for('video_feed') }}" width="70%" height="100%">
+
+  </div>
+
+
+  <div class="column right" >
+
+  	<div class=columnthree>
+  	<h4> Detected Plate Image :</h4>
+	<img src=" " id="numberTag">
+	</div>
+
+<div clsss=columntwo>
+	<!-- <h3 id="text"></h3> -->
+	 NumberPlate : <h4 id="NumberPlate"></h4>
+	TimeStamp : <h4 id="TimeStamp"></h4>
+</div>
+  </div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+	setInterval(function(){ 
+		var plate = document.getElementById('numberTag');
+		plate.src = '../static/img/plate.jpg';
+		// fetch('/file/plates.csv')
+		fetch('../static/img/plate.jpg')
+		  .then(
+		    function(response) {
+		      if (response.status !== 200) {
+		        console.log('Looks like there was a problem. Status Code: ' +
+		          response.status);
+		        return;
+		      }
+
+		      // Examine the text in the response
+		      response.text().then(function(data) {
+		        // console.log(data); 
+		        let lines = raw.split(/(?:\r\n|\n)+/).filter(function(data) {
+		        	return data.length != 0
+		        	});
+		        document.getElementById('numberTag').innerHTML = data
+		        // document.getElementById('text').innerHTML = data
+		      });
+		    }
+		  )
+		  fetch('/file/plates.csv')
+		  .then(
+		    function(response) {
+		      if (response.status !== 200) {
+		        console.log('Looks like there was a problem. Status Code: ' +
+		          response.status);
+		        return;
+		      }
+
+		      // Examine the text in the response
+		      response.text().then(function(data) {
+		        console.log(data); 
+		        // let lines = raw.split(/(?:\r\n|\n)+/).filter(function(data) {
+		        // 	return data.length != 0
+		        // 	});
+		        // document.getElementById('numberTag').innerHTML = data
+		        // document.getElementById('text').innerHTML = data
+		        var num = data.substring(0,8);
+  				var tim = data.substring(9);
+  				document.getElementById('NumberPlate').innerHTML = num;
+ 				document.getElementById('TimeStamp').innerHTML = tim;
+		      });
+		    }
+		  )
+		  .catch(function(err) {
+		    console.log('Fetch Error :-S', err);
+		  });
+	}, 1000);
+</script>
+</body>
+</html>
