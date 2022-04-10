@@ -26,4 +26,4 @@ $ .\venv\Scripts\activate
 The website will then be running at http://localhost:5000
 
 
-![Result](/img/output.jpeg)
+![Result](/img/Output.jpeg)
